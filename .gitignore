@@ -7,3 +7,13 @@ target
 *.jar
 *.war
 *.ear
+
+#NetBeans
+nb-configuration.xml
+
+#Eclipse
+.classpath
+.project
+.settings
+.metadata
+
