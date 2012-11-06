@@ -12,7 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <junit.version>3.8.1</junit.version>
+    <junit.version>4.10</junit.version>
     <asm.version>1.5.3</asm.version>
   </properties>
 
