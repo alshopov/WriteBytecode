@@ -1,6 +1,5 @@
 package org.kambanaria.writebytecode.asm;
 
-import java.io.IOException;
 
 public class DemoClassLoader extends ClassLoader {
     private String _demoName;
@@ -14,9 +13,9 @@ public class DemoClassLoader extends ClassLoader {
     public Class<?> loadClass(String name) throws ClassNotFoundException {
         if (name.startsWith("org.kambanaria.writebytecode.asm.SimpleClass")) {
             try {
-                byte[] bytes = Utilities.demo(_demoName);
+                byte[] bytes = null; // FIXME
                 return defineClass(name, bytes, 0, bytes.length);
-            } catch (IOException e) {
+            } catch (ClassFormatError e) {
                 throw new ClassNotFoundException(e.getMessage(), e);
             }
         } else {

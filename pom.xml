@@ -13,19 +13,13 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.10</junit.version>
-    <asm.version>1.5.3</asm.version>
+    <asm.version>4.0</asm.version>
   </properties>
 
   <dependencies>
     <dependency>
-      <groupId>asm</groupId>
+      <groupId>org.ow2.asm</groupId>
       <artifactId>asm</artifactId>
-      <version>${asm.version}</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>asm</groupId>
-      <artifactId>asm-attrs</artifactId>
       <version>${asm.version}</version>
       <scope>compile</scope>
     </dependency>

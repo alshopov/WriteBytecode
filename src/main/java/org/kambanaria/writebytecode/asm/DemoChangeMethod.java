@@ -1,28 +1,33 @@
 package org.kambanaria.writebytecode.asm;
 
-import static org.objectweb.asm.Constants.*;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
+import static org.objectweb.asm.Opcodes.*;
 
-import org.objectweb.asm.Attribute;
-import org.objectweb.asm.CodeAdapter;
-import org.objectweb.asm.CodeVisitor;
 
 public class DemoChangeMethod extends DemoClassAdapter {
+
+    public DemoChangeMethod(ClassVisitor cv){
+        super(cv);
+    }
+    
     @Override
-    public CodeVisitor visitMethod(int access, String name, String desc, String[] exceptions, Attribute attrs) {
-        CodeVisitor cv = super.visitMethod(access, name, desc, exceptions, attrs);
+    public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
+        MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
 
         if ("getValue".equals(name) && "()I".equals(desc)) {
-            return new MethodVisitor(cv);
+            return new DemoMethodVisitor(Opcodes.ASM4, mv);
         } else {
-            return cv;
+            return mv;
         }
     }
     
-    class MethodVisitor extends CodeAdapter{
-        public MethodVisitor(CodeVisitor cv){
-            super(cv);
-            cv.visitIntInsn(BIPUSH, 42);
-            cv.visitInsn(IRETURN);
+    class DemoMethodVisitor extends MethodVisitor{
+        public DemoMethodVisitor(int version, MethodVisitor mv){
+            super(version, mv);
+            mv.visitIntInsn(BIPUSH, 42);
+            mv.visitInsn(IRETURN);
         }
     }
 }
