@@ -4,9 +4,9 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import static org.objectweb.asm.Opcodes.*;
 
-public class DemoAddMethod extends DemoClassAdapter {
+public class AddMethod extends DemoClassAdapter {
 
-    public DemoAddMethod(ClassVisitor cv) {
+    public AddMethod(ClassVisitor cv) {
         super(cv);
     }
 

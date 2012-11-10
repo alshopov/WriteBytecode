@@ -6,9 +6,9 @@ import org.objectweb.asm.Opcodes;
 import static org.objectweb.asm.Opcodes.*;
 
 
-public class DemoChangeMethod extends DemoClassAdapter {
+public class ChangeMethod extends DemoClassAdapter {
 
-    public DemoChangeMethod(ClassVisitor cv){
+    public ChangeMethod(ClassVisitor cv){
         super(cv);
     }
     

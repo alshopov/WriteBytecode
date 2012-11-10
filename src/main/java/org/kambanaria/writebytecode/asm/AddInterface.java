@@ -3,11 +3,11 @@ package org.kambanaria.writebytecode.asm;
 import java.util.Arrays;
 import org.objectweb.asm.ClassVisitor;
 
-public class DemoAddInterface extends DemoClassAdapter {
+public class AddInterface extends DemoClassAdapter {
 
     private static final String COMPARABLE = "java/lang/Comparable";
 
-    public DemoAddInterface(ClassVisitor cv){
+    public AddInterface(ClassVisitor cv){
         super(cv);
     }
 

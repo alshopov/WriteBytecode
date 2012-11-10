@@ -3,6 +3,7 @@ package org.kambanaria.writebytecode.asm;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Method;
 import org.objectweb.asm.ClassReader;
 
 public final class Utilities {
@@ -34,5 +35,13 @@ public final class Utilities {
         byte[] result = new byte[read];
         System.arraycopy(bytes, 0, result, 0, result.length);
         return result;
+    }
+
+    public static Object call0ArgsMethodOn(Object o, String methodName) throws ReflectiveOperationException {
+        Class<?> c = o.getClass();
+        Method m = c.getDeclaredMethod(methodName, (Class<?>[]) null);
+        m.setAccessible(true);
+        return m.invoke(o, (Object[]) null);
+
     }
 }
