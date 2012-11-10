@@ -19,8 +19,9 @@ public class AddInterface extends DemoClassAdapter {
             int l = interfaces.length;
             String[] newInterfaces = new String[l+1];
             System.arraycopy(interfaces, 0, newInterfaces, 0, l);
-            super.visit(version, access, name, signature, superName, interfaces);
-        };
+            newInterfaces[l] = COMPARABLE;
+            super.visit(version, access, name, signature, superName, newInterfaces);
+        }
     }
 
 }

@@ -11,6 +11,9 @@ public final class Utilities {
     private Utilities() {
     }
 
+    public static final String CLASS_NAME = "org.kambanaria.writebytecode.asm.Zombunny";
+    public static final String METHOD_NAME = "getValue";
+    
     public static String toClassPathResourceName(String clazz) {
         return clazz.replace('.', '/') + ".class";
     }
