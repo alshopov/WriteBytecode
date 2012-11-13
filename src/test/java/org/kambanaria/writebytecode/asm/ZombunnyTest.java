@@ -21,7 +21,7 @@ public class ZombunnyTest {
     }
 
     @Test
-    public void testGetValue() throws ReflectiveOperationException {
+    public void testGetVersion() throws ReflectiveOperationException {
         Integer value = (Integer) Utilities.call0ArgsMethodOn(sut, Utilities.METHOD_NAME);
         assertEquals("Wrong value!", Integer.valueOf(1), value);
     }

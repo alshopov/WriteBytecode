@@ -16,7 +16,7 @@ public class ChangeMethod extends DemoClassAdapter {
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
         MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
 
-        if ("getValue".equals(name) && "()I".equals(desc)) {
+        if (Utilities.METHOD_NAME.equals(name) && "()I".equals(desc)) {
             return new DemoMethodVisitor(Opcodes.ASM4, mv);
         } else {
             return mv;
