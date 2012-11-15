@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.kambanaria.writebytecode.asm;
 
 import java.io.IOException;
@@ -23,6 +19,7 @@ import org.objectweb.asm.Type;
 public class ManipulateConstructorsTest {
 
     Object sutNoArgs;
+
     Object sut1Arg;
 
     @Before
@@ -37,7 +34,7 @@ public class ManipulateConstructorsTest {
         Class<?> newClass = ldr.loadClass(Utilities.CLASS_NAME);
         sutNoArgs = newClass.newInstance();
         Constructor<?> constructor = newClass.getDeclaredConstructor(Integer.class);
-        sut1Arg= constructor.newInstance(new Integer(3));
+        sut1Arg = constructor.newInstance(new Integer(3));
     }
 
     @After
@@ -54,7 +51,7 @@ public class ManipulateConstructorsTest {
         System.out.println(Type.getDescriptor(Integer.class));
         assertEquals(new Integer(2), newVersion);
     }
-    
+
     @Test
     public void test1ArgNewFieild() throws ReflectiveOperationException {
         Field versionFld = sut1Arg.getClass().getDeclaredField("_version");
@@ -62,5 +59,4 @@ public class ManipulateConstructorsTest {
         Object newVersion = versionFld.get(sut1Arg);
         assertEquals(new Integer(3), newVersion);
     }
-
 }
