@@ -5,6 +5,7 @@
 package org.kambanaria.writebytecode.asm;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import org.junit.After;
 import static org.junit.Assert.*;
@@ -21,7 +22,8 @@ import org.objectweb.asm.Type;
  */
 public class ManipulateConstructorsTest {
 
-    Object sut;
+    Object sutNoArgs;
+    Object sut1Arg;
 
     @Before
     public void setUp() throws IOException, ReflectiveOperationException {
@@ -33,21 +35,32 @@ public class ManipulateConstructorsTest {
         StupidClassLoader ldr = new StupidClassLoader();
         ldr.provide(Utilities.CLASS_NAME, newClassBytes);
         Class<?> newClass = ldr.loadClass(Utilities.CLASS_NAME);
-        sut = newClass.newInstance();
+        sutNoArgs = newClass.newInstance();
+        Constructor<?> constructor = newClass.getDeclaredConstructor(Integer.class);
+        sut1Arg= constructor.newInstance(new Integer(3));
     }
 
     @After
     public void tearDown() {
-        sut = null;
+        sutNoArgs = null;
+        sut1Arg = null;
     }
 
     @Test
-    public void testNewFieild() throws ReflectiveOperationException {
-        Field versionFld = sut.getClass().getDeclaredField("_version");
+    public void testNoArgsNewFieild() throws ReflectiveOperationException {
+        Field versionFld = sutNoArgs.getClass().getDeclaredField("_version");
         versionFld.setAccessible(true);
-        Object newVersion = versionFld.get(sut);
+        Object newVersion = versionFld.get(sutNoArgs);
         System.out.println(Type.getDescriptor(Integer.class));
         assertEquals(new Integer(2), newVersion);
+    }
+    
+    @Test
+    public void test1ArgNewFieild() throws ReflectiveOperationException {
+        Field versionFld = sut1Arg.getClass().getDeclaredField("_version");
+        versionFld.setAccessible(true);
+        Object newVersion = versionFld.get(sut1Arg);
+        assertEquals(new Integer(3), newVersion);
     }
 
 }
