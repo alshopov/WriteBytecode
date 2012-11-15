@@ -34,14 +34,14 @@ public class AddInterfaceTest {
     }
 
     @Test
-    public void testNewClass() {
+    public void testAddedInterface() {
         Class[] interfaces = sut.getClass().getInterfaces();
         System.out.println("All interfaces " + Arrays.toString(interfaces));
         assertThat(interfaces, hasItemInArray((Class)Comparable.class));
     }
     
     @Test(expected=AbstractMethodError.class)
-    public void testComparability(){
+    public void testAddedInterfaceImplementation(){
         Comparable cmp = (Comparable) sut;
         cmp.compareTo(new Object());
     }

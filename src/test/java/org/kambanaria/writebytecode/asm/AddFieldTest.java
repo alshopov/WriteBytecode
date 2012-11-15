@@ -42,7 +42,7 @@ public class AddFieldTest {
     }
 
     @Test
-    public void testNewFieild() throws ReflectiveOperationException {
+    public void testAddedFieild() throws ReflectiveOperationException {
         Field versionFld = sut.getClass().getDeclaredField("_version");
         versionFld.setAccessible(true);
         Object newVersion = versionFld.get(sut);

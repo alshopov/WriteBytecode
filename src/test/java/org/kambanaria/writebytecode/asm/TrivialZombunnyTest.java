@@ -20,7 +20,7 @@ public class TrivialZombunnyTest {
     }
 
     @Test
-    public void testGetVersion() {
+    public void testTrivialGetVersion() {
         assertEquals("Wrong version!", Integer.valueOf(1), sut.getVersion());
     }
 }

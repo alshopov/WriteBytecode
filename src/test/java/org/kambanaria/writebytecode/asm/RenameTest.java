@@ -34,7 +34,7 @@ public class RenameTest {
     }
 
     @Test
-    public void testNewClass() {
+    public void testRenamedClass() {
         String resultName = sut.getClass().getName();
         System.out.println("Renamed to " + resultName);
         assertEquals("The names differ: ",newName, resultName);
