@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.kambanaria.writebytecode.asm;
 
 import java.io.IOException;
@@ -14,10 +10,6 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 
-/**
- *
- * @author ashopov
- */
 public class ChangeMethodTest {
 
     Object sut;

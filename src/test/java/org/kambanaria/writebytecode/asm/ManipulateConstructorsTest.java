@@ -12,10 +12,6 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Type;
 
-/**
- *
- * @author ashopov
- */
 public class ManipulateConstructorsTest {
 
     Object sutNoArgs;

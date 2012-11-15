@@ -3,10 +3,6 @@ package org.kambanaria.writebytecode.compiler;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-/**
- *
- * @author Alexander Shopov <ash@kambanaria.org>
- */
 public class ExistingClassesTest {
 
     @Test

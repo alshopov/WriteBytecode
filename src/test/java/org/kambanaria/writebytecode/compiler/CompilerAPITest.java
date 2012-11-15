@@ -8,10 +8,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- *
- * @author Alexander Shopov <ash@kambanaria.org>
- */
 public class CompilerAPITest {
 
     Object i;
