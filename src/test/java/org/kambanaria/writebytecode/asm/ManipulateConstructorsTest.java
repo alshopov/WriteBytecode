@@ -28,7 +28,7 @@ public class ManipulateConstructorsTest {
     @Before
     public void setUp() throws IOException, ReflectiveOperationException {
         ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES + ClassWriter.COMPUTE_MAXS);
-        ClassVisitor cv = new ManipulateConstructors(new AddField(cw));
+        ClassVisitor cv = new AddField(new ManipulateConstructors(cw));
         ClassReader rdr = new ClassReader(Utilities.CLASS_NAME);
         rdr.accept(cv, 0);
         byte[] newClassBytes = cw.toByteArray();
