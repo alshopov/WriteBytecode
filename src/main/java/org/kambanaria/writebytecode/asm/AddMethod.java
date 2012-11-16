@@ -43,5 +43,7 @@ public class AddMethod extends DemoClassAdapter {
         compareToZombunny.visitInsn(IRETURN);
         compareToZombunny.visitMaxs(2, 2);
         compareToZombunny.visitEnd();
+        
+        cv.visitEnd();
     }
 }

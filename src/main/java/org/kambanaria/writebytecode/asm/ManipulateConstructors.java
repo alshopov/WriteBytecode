@@ -44,7 +44,6 @@ public class ManipulateConstructors extends DemoClassAdapter {
         mv.visitInsn(RETURN);
         mv.visitMaxs(2, 2);
         mv.visitEnd();
-
-
+        cv.visitEnd();
     }
 }
