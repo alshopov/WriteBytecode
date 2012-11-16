@@ -8,7 +8,8 @@ class StringSourceCodeObject extends SimpleJavaFileObject {
     final String _source;
 
     public StringSourceCodeObject(String fqName, String source) {
-        super(URI.create("string:///" + fqName.replaceAll("\\.", "/") + Kind.SOURCE.extension), Kind.SOURCE);
+        super(URI.create("string:///" + fqName.replaceAll("\\.", "/") //
+                + Kind.SOURCE.extension), Kind.SOURCE);
         _source = source;
     }
 
