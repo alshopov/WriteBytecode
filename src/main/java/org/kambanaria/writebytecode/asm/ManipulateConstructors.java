@@ -11,7 +11,8 @@ public class ManipulateConstructors extends DemoClassAdapter {
     }
 
     @Override
-    public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
+    public MethodVisitor visitMethod(int access, String name, String desc, //
+            String signature, String[] exceptions) {
         if ("<init>".equals(name)) {
             MethodVisitor mv = cv.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
             mv.visitCode();
@@ -22,7 +23,8 @@ public class ManipulateConstructors extends DemoClassAdapter {
             mv.visitInsn(DUP);
             mv.visitInsn(ICONST_2);
             mv.visitMethodInsn(INVOKESPECIAL, "java/lang/Integer", "<init>", "(I)V");
-            mv.visitFieldInsn(PUTFIELD, "org/kambanaria/writebytecode/asm/Zombunny", "_version", "Ljava/lang/Integer;");
+            mv.visitFieldInsn(PUTFIELD, "org/kambanaria/writebytecode/asm/Zombunny", //
+                    "_version", "Ljava/lang/Integer;");
             mv.visitInsn(RETURN);
             mv.visitMaxs(4, 1);
             mv.visitEnd();
@@ -34,13 +36,15 @@ public class ManipulateConstructors extends DemoClassAdapter {
 
     @Override
     public void visitEnd() {
-        MethodVisitor mv = cv.visitMethod(ACC_PUBLIC, "<init>", "(Ljava/lang/Integer;)V", null, null);
+        MethodVisitor mv = cv.visitMethod(ACC_PUBLIC, "<init>", "(Ljava/lang/Integer;)V", //
+                null, null);
         mv.visitCode();
         mv.visitVarInsn(ALOAD, 0);
         mv.visitMethodInsn(INVOKESPECIAL, "java/lang/Object", "<init>", "()V");
         mv.visitVarInsn(ALOAD, 0);
         mv.visitVarInsn(ALOAD, 1);
-        mv.visitFieldInsn(PUTFIELD, "org/kambanaria/writebytecode/asm/Zombunny", "_version", "Ljava/lang/Integer;");
+        mv.visitFieldInsn(PUTFIELD, "org/kambanaria/writebytecode/asm/Zombunny", //
+                "_version", "Ljava/lang/Integer;");
         mv.visitInsn(RETURN);
         mv.visitMaxs(2, 2);
         mv.visitEnd();

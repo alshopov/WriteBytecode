@@ -12,13 +12,9 @@ public class ChangeMethod extends DemoClassAdapter {
     }
 
     @Override
-    public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
+    public MethodVisitor visitMethod(int access, String name, String desc, //
+            String signature, String[] exceptions) {
         MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
-        System.out.println(name);
-        System.out.println(desc);
-        System.out.println(Utilities.METHOD_NAME.equals(name));
-        System.out.println("()Ljava/lang/Integer".equals(desc));
-        System.out.println(Utilities.METHOD_NAME.equals(name) && "()Ljava/lang/Integer;".equals(desc));
         if (Utilities.METHOD_NAME.equals(name) && "()Ljava/lang/Integer;".equals(desc)) {
             return new DemoMethodVisitor(Opcodes.ASM4, mv);
         } else {
@@ -32,7 +28,8 @@ public class ChangeMethod extends DemoClassAdapter {
             super(version, mv);
             mv.visitCode();
             mv.visitVarInsn(ALOAD, 0);
-            mv.visitFieldInsn(GETFIELD, "org/kambanaria/writebytecode/asm/Zombunny", "_version", "Ljava/lang/Integer;");
+            mv.visitFieldInsn(GETFIELD, "org/kambanaria/writebytecode/asm/Zombunny", //
+                    "_version", "Ljava/lang/Integer;");
             mv.visitInsn(ARETURN);
             mv.visitEnd();
 

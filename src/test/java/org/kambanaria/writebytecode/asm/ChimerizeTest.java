@@ -14,11 +14,12 @@ public class ChimerizeTest {
 
     Comparable sut;
 
-
     @Before
     public void setUp() throws IOException, ReflectiveOperationException {
-        ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES + ClassWriter.COMPUTE_MAXS);
-        ClassVisitor cv = new AddField(new ManipulateConstructors(new AddMethod(new AddInterface(new Chimerize(cw)))));
+        ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES + //
+                ClassWriter.COMPUTE_MAXS);
+        ClassVisitor cv = new AddField(new ManipulateConstructors(//
+                new AddMethod(new AddInterface(new Chimerize(cw)))));
         ClassReader rdr = new ClassReader(Utilities.CLASS_NAME);
         rdr.accept(cv, 0);
         byte[] newClassBytes = cw.toByteArray();
@@ -38,5 +39,4 @@ public class ChimerizeTest {
     public void test_toString() throws ReflectiveOperationException {
         assertEquals("Version: 42", sut.toString());
     }
-
 }

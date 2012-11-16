@@ -7,21 +7,21 @@ public class AddInterface extends DemoClassAdapter {
 
     private static final String COMPARABLE = "java/lang/Comparable";
 
-    public AddInterface(ClassVisitor cv){
+    public AddInterface(ClassVisitor cv) {
         super(cv);
     }
 
     @Override
-    public void visit(int version, int access, String name, String signature, String superName, String[] interfaces){
-        if (Arrays.asList(interfaces).contains(COMPARABLE)){
-           super.visit(version, access, name, signature, superName, interfaces);
+    public void visit(int version, int access, String name, String signature,//
+            String superName, String[] interfaces) {
+        if (Arrays.asList(interfaces).contains(COMPARABLE)) {
+            super.visit(version, access, name, signature, superName, interfaces);
         } else {
             int l = interfaces.length;
-            String[] newInterfaces = new String[l+1];
+            String[] newInterfaces = new String[l + 1];
             System.arraycopy(interfaces, 0, newInterfaces, 0, l);
             newInterfaces[l] = COMPARABLE;
             super.visit(version, access, name, signature, superName, newInterfaces);
         }
     }
-
 }
